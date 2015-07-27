@@ -18,7 +18,7 @@ onload = function() {
   };
 
   document.querySelector('#home').onclick = function() {
-    navigateTo('http://www.google.com/');
+    navigateTo('http://aco.uwaterloo.ca');
   };
 
   document.querySelector('#reload').onclick = function() {
@@ -35,11 +35,11 @@ onload = function() {
         document.body.classList.remove('loading');
       }
     });
-
+/*
   document.querySelector('#terminate').onclick = function() {
     webview.terminate();
   };
-
+*/
   document.querySelector('#location-form').onsubmit = function(e) {
     e.preventDefault();
     navigateTo(document.querySelector('#location').value);
@@ -98,7 +98,7 @@ function handleLoadCommit(event) {
     return;
   }
 
-  document.querySelector('#location').value = event.url;
+  //document.querySelector('#location').value = event.url;
 
   var webview = document.querySelector('webview');
   document.querySelector('#back').disabled = !webview.canGoBack();
@@ -114,13 +114,14 @@ function handleLoadStart(event) {
     return;
   }
 
-  document.querySelector('#location').value = event.url;
+  //document.querySelector('#location').value = event.url;
 }
 
 function handleLoadStop(event) {
   // We don't remove the loading class immediately, instead we let the animation
   // finish, so that the spinner doesn't jerkily reset back to the 0 position.
   isLoading = false;
+  webview.executeScript({ file: "blocker.js" });
 }
 
 function handleLoadAbort(event) {
@@ -136,5 +137,5 @@ function handleLoadRedirect(event) {
     return;
   }
 
-  document.querySelector('#location').value = event.newUrl;
+  //document.querySelector('#location').value = event.newUrl;
 }
