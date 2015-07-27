@@ -11,7 +11,7 @@ function blocker() {
         cur = link[i];
         //If the URL does not contain "uwaterloo.ca"
         if(cur.href.indexOf("uwaterloo.ca") <= -1) {
-            alert("Blocked URL");
+            //alert("Blocked URL");
             // Remove link
             link[i].removeAttribute("href", "");
             console.log("Link has been set to Home");
