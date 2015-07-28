@@ -23,10 +23,23 @@ chrome.app.runtime.onRestarted.addListener(function() {
  * @see http://developer.chrome.com/trunk/apps/app.window.html
  */
 function runApp() {
-  chrome.app.window.create('browser.html', {
-    bounds: {
-      'width': 1024,
-      'height': 768
-    }
-  });
+  chrome.system.display.getInfo(function(d){
+      chrome.app.window.create("browser.html", {
+        'frame': 'none',
+        'id': 'browser',
+        'state': 'fullscreen',
+        'bounds':{
+           'left':0,
+           'top':0,
+           'width':d[0].bounds.width,
+           'height':d[0].bounds.height
+        }
+      },function(w){
+        win = w;
+        win.fullscreen();
+        setTimeout(function(){
+          win.fullscreen();
+        },1000);
+      });
+    });
 }

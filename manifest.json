@@ -1,6 +1,13 @@
 {
-"update_url": "https://clients2.google.com/service/update2/crx",
-
+  "name": "Simple Kiosk App EngComp",
+  "description": "Launch ACO website",
+  "manifest_version": 2, 
+  "version":"1.0",
+  "author": {
+    "name": "Jack Truong",
+    "email": "jack.truong@uwaterloo.ca"
+  },
+  "kiosk_enabled": true,
   "app": {
     "background": {
       "scripts": [
@@ -12,12 +19,11 @@
     "128": "icon_128.png", 
     "16": "icon_16.png"
   }, 
-  "version":"5.1",
-  "manifest_version": 2, 
   "minimum_chrome_version": "31.0.0.0", 
   "name": "Sample test kiosk App", 
   "permissions": [
-    "webview"
- ],
-  "kiosk_enabled": true
+    "webview",
+    "system.display",
+    "alwaysOnTopWindows"
+ ]
 }
